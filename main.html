@@ -3,44 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alphabetical Article Sorter</title>
+    <title>Music List</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('background.jpg'); /* Use your desired background image */
-            background-size: cover;
-            color: white;
+            background-color: #f0f0f0;
+            margin: 0;
             padding: 20px;
         }
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
+        .music-list {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .music-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .music-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .music-list li:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
 <body>
-
-    <h1>Sorted Articles</h1>
-    <ul id="band"></ul>
-
-    <script>
-        const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
-
-        // Function to remove 'a', 'an', 'the' and sort the array
-        const sortedBands = bands.sort((a, b) => {
-            const strippedA = a.replace(/^(a |an |the )/i, '').trim();
-            const strippedB = b.replace(/^(a |an |the )/i, '').trim();
-            return strippedA.localeCompare(strippedB);
-        });
-
-        // Select the unordered list and add sorted bands as list items
-        const bandList = document.getElementById('band');
-        sortedBands.forEach(band => {
-            const li = document.createElement('li');
-            li.textContent = band;
-            bandList.appendChild(li);
-        });
-    </script>
-
+    <div class="music-list">
+        <ul>
+            <li>Anywhere But Here</li>
+            <li>The Bled</li>
+            <li>Counterparts</li>
+            <li>The Devil Wears Prada</li>
+            <li>The Midway State</li>
+            <li>Norma Jean</li>
+            <li>Oh, Sleeper</li>
+            <li>An Old Dog</li>
+            <li>Pierce the Veil</li>
+            <li>The Plot in You</li>
+            <li>Say Anything</li>
+        </ul>
+    </div>
 </body>
 </html>
