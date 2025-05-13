@@ -1,64 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alphabetical Article Sorter</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: url('your-background-image-url.jpg') no-repeat center center fixed; /* Placeholder for a background image */
-            background-size: cover;
-            color: #333;
-        }
-        ul {
-            list-style-type: none; 
-            padding: 0;
-        }
-        li {
-            padding: 5px 0;
-            font-size: 18px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Alphabetical Article Sorter</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <ul id="band"></ul>
+  <div class="container">
+    <h2>Sorted Articles</h2>
+    <ul id="bands"></ul>
+  </div>
 
-    <script>
-        const bands = [
-            'The Plot in You',
-            'The Devil Wears Prada',
-            'Pierce the Veil',
-            'Norma Jean',
-            'The Bled',
-            'Say Anything',
-            'The Midway State',
-            'We Came as Romans',
-            'Counterparts',
-            'Oh, Sleeper',
-            'A Skylit Drive',
-            'Anywhere But Here',
-            'An Old Dog'
-        ];
-
-        // Function to sort bands ignoring "a", "an", and "the"
-        function sortBands(bands) {
-            return bands.sort((a, b) => {
-                const removeArticles = (str) => str.replace(/^(a|an|the)\s+/i, '');
-                return removeArticles(a).localeCompare(removeArticles(b));
-            });
-        }
-
-        // Get the sorted bands
-        const sortedBands = sortBands(bands);
-
-        // Select the unordered list and append the sorted bands
-        const bandList = document.getElementById('band');
-        sortedBands.forEach(band => {
-            const li = document.createElement('li');
-            li.textContent = band;
-            bandList.appendChild(li);
-        });
-    </script>
+  <script src="script.js"></script>
 </body>
+
 </html>
