@@ -1,49 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Alphabetical Article Sorter</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5 url('https://www.transparenttextures.com/patterns/forest.png');
-      background-size: cover;
-      padding: 20px;
-    }
-    ul#band {
-      background-color: white;
-      padding: 20px;
-      max-width: 400px;
-      list-style-type: square;
-    }
-    li {
-      padding: 5px 0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabetical Article Sorter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('your-background-image-url.jpg') no-repeat center center fixed; /* Placeholder for a background image */
+            background-size: cover;
+            color: #333;
+        }
+        ul {
+            list-style-type: none; 
+            padding: 0;
+        }
+        li {
+            padding: 5px 0;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
+    <ul id="band"></ul>
 
-  <ul id="band"></ul>
-<script>
-    const bands = [
-      'The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil',
-      'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State',
-      'We Came as Romans', 'Counterparts', 'Oh, Sleeper',
-      'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'
-    ];
+    <script>
+        const bands = [
+            'The Plot in You',
+            'The Devil Wears Prada',
+            'Pierce the Veil',
+            'Norma Jean',
+            'The Bled',
+            'Say Anything',
+            'The Midway State',
+            'We Came as Romans',
+            'Counterparts',
+            'Oh, Sleeper',
+            'A Skylit Drive',
+            'Anywhere But Here',
+            'An Old Dog'
+        ];
 
-    // Function to strip articles
-    function strip(bandName) {
-      return bandName.replace(/^(a |an |the )/i, '').trim();
-    }
+        // Function to sort bands ignoring "a", "an", and "the"
+        function sortBands(bands) {
+            return bands.sort((a, b) => {
+                const removeArticles = (str) => str.replace(/^(a|an|the)\s+/i, '');
+                return removeArticles(a).localeCompare(removeArticles(b));
+            });
+        }
 
-    // Sort ignoring "a", "an", "the"
-    const sorted = bands.sort((a, b) => strip(a).localeCompare(strip(b)));
+        // Get the sorted bands
+        const sortedBands = sortBands(bands);
 
-    // Render to list
-    const bandList = document.getElementById('band');
-	bandList.innerHTML = sorted.map(band => <li>${band}</li>).join('');
-  </script>
-
+        // Select the unordered list and append the sorted bands
+        const bandList = document.getElementById('band');
+        sortedBands.forEach(band => {
+            const li = document.createElement('li');
+            li.textContent = band;
+            bandList.appendChild(li);
+        });
+    </script>
 </body>
 </html>
