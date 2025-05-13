@@ -1,50 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-        }
-        .music-list {
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-        }
-        .music-list ul {
-            list-style: none;
-            padding: 0;
-        }
-        .music-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        .music-list li:last-child {
-            border-bottom: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Alphabetical Article Sorter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5 url('https://www.transparenttextures.com/patterns/forest.png');
+      background-size: cover;
+      padding: 20px;
+    }
+    ul#band {
+      background-color: white;
+      padding: 20px;
+      max-width: 400px;
+      list-style-type: square;
+    }
+    li {
+      padding: 5px 0;
+    }
+  </style>
 </head>
 <body>
-    <div class="music-list">
-        <ul>
-            <li>Anywhere But Here</li>
-            <li>The Bled</li>
-            <li>Counterparts</li>
-            <li>The Devil Wears Prada</li>
-            <li>The Midway State</li>
-            <li>Norma Jean</li>
-            <li>Oh, Sleeper</li>
-            <li>An Old Dog</li>
-            <li>Pierce the Veil</li>
-            <li>The Plot in You</li>
-            <li>Say Anything</li>
-        </ul>
-    </div>
+
+  <ul id="band"></ul>
+<script>
+    const bands = [
+      'The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil',
+      'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State',
+      'We Came as Romans', 'Counterparts', 'Oh, Sleeper',
+      'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'
+    ];
+
+    // Function to strip articles
+    function strip(bandName) {
+      return bandName.replace(/^(a |an |the )/i, '').trim();
+    }
+
+    // Sort ignoring "a", "an", "the"
+    const sorted = bands.sort((a, b) => strip(a).localeCompare(strip(b)));
+
+    // Render to list
+    const bandList = document.getElementById('band');
+	bandList.innerHTML = sorted.map(band => <li>${band}</li>).join('');
+  </script>
+
 </body>
 </html>
